@@ -1,0 +1,9 @@
+SELECT title AS movie_name,
+SUM (amount) AS total_amount
+FROM payment A
+INNER JOIN rental B ON A.rental_id = B.rental_id
+INNER JOIN inventory C on B.inventory_id = C.inventory_id
+INNER JOIN film D ON C.film_id = D.film_id
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 10
